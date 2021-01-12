@@ -1,7 +1,8 @@
 import React from 'react';
 
-import classes from './Burger.module.css';
+import BurgerIngredientProps from './BurgerIngredient/BurgerIngredient';
 
+import classes from './Burger.module.css';
 export interface BurgerProps {
     
 }
@@ -9,7 +10,8 @@ export interface BurgerProps {
 const Burger: React.FC<BurgerProps> = () => {
     return (  
         <div className={classes.Burger}>
-            Burger
+            <BurgerIngredientProps type='bread-top'/>
+            <BurgerIngredientProps type='bread-bottom'/>
         </div>
     );
 }

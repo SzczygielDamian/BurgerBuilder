@@ -6,7 +6,7 @@ export interface PriceProps {
  
 const Price: React.FC<PriceProps> = ({price}) => {
     return (
-        <p>{price.toFixed(2)}</p>
+        <p>Total Price: <strong>{price.toFixed(2)}</strong></p>
       );
 }
  
