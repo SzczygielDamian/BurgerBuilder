@@ -1,5 +1,8 @@
 import React from 'react';
 
+import Burger from '../../components/Burger/Burger';
+import BuildControls from '../../components/Burger/BuildControls/BuildControls';
+
 export interface BurgerBuilderProps {
     
 }
@@ -7,7 +10,8 @@ export interface BurgerBuilderProps {
 const BurgerBuilder: React.FC<BurgerBuilderProps> = () => {
     return ( 
         <div>
-            BURGER
+            <Burger />
+            <BuildControls />
         </div>
      );
 }

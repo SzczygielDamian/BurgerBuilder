@@ -5,7 +5,6 @@ import BurgerBuilder from "../conteiners/BurgerBuilder/BurgerBuilder";
 import Checkout from "../conteiners/Checekout/Checkout";
 import Orders from "../conteiners/Orders/Orders";
 import Auth from "../conteiners/Auth/Auth";
-import Layout from "./Layout";
 
 const Page = () => {
   return (
