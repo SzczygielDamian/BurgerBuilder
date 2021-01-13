@@ -1,13 +1,15 @@
 import React from 'react';
 
+import Order from '../../components/Order/Order';
+
 export interface OrdersProps {
     
 }
  
-const Orders: React.SFC<OrdersProps> = () => {
+const Orders: React.FC<OrdersProps> = () => {
     return ( 
         <div>
-            Orders
+            <Order />
         </div>
      );
 }
