@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
-import Burger from '../../components/Burger/Burger';
-import BuildControls from '../../components/Burger/BuildControls/BuildControls';
+import Burger from "../../components/Burger/Burger";
+import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 
-export interface BurgerBuilderProps {
-    
-}
- 
+import { fetchIngredients } from "../../store/Ingredients/Actions/actions";
+
+export interface BurgerBuilderProps {}
+
 const BurgerBuilder: React.FC<BurgerBuilderProps> = () => {
-    return ( 
-        <div>
-            <Burger />
-            <BuildControls />
-        </div>
-     );
-}
- 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchIngredients());
+  }, []);
+
+  return (
+    <div>
+      <Burger />
+      <BuildControls />
+    </div>
+  );
+};
+
 export default BurgerBuilder;
