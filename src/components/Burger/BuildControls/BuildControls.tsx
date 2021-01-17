@@ -26,7 +26,7 @@ const BuildControls: React.FC<BuildControlsProps> = () => {
     return ( 
         <div className={classes.BuildControls}>
             <Price price={2.2}/>
-            {/* {builderControls} */}
+            {builderControls}
             <Button name={"Order Now"}/>
         </div>
      );

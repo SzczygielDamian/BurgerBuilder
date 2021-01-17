@@ -13,7 +13,7 @@ const BurgerBuilder: React.FC<BurgerBuilderProps> = () => {
 
   useEffect(() => {
     dispatch(fetchIngredients());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
