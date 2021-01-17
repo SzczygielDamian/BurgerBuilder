@@ -12,6 +12,7 @@ export interface IngredientsInterface {
     id?: string;
     label: string;
     type: string;
+    price: number;
 }
 
 export const addIngredients = (ingredients: IngredientsInterface) => ({

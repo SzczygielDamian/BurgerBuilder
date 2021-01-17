@@ -1,12 +1,12 @@
 import React from 'react';
 
 export interface PriceProps {
-    price: number;
+    totalPrice: number;
 }
  
-const Price: React.FC<PriceProps> = ({price}) => {
+const Price: React.FC<PriceProps> = ({totalPrice}) => {
     return (
-        <p>Total Price: <strong>{price.toFixed(2)}</strong></p>
+        <p>Total Price: <strong>{totalPrice.toFixed(2)}</strong></p>
       );
 }
  

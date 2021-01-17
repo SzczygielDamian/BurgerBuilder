@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
  
 import Price from './Price/Price';
@@ -12,20 +12,27 @@ import { RootState } from '../../../store/rootReducer';
 
 import { IngredientsInterface } from '../../../store/Ingredients/Actions/actions';
 
+import { addIngredient, removeIngredient } from '../../../store/BurgerBuilder/Actions/actions';
+
 export interface BuildControlsProps {
 
 }
 
+let ingredients = {};
+
 const BuildControls: React.FC<BuildControlsProps> = () => {
     const controls = useSelector( (store: RootState) => store.ingredients.ingredients)
-    console.log(controls)
+    const burgerState = useSelector( (store: RootState) => store.burger)
+    const dispatch = useDispatch();
+    
+    
     const builderControls = controls != null ? controls.map( (item: IngredientsInterface) => (
-        <CreateBurger key={item.id} label={item.label}/>
+        <CreateBurger key={item.id} label={item.label} add={() => dispatch(addIngredient(item))} remove={() => dispatch(removeIngredient(item.id))} />
     )) : null
     
     return ( 
         <div className={classes.BuildControls}>
-            <Price price={2.2}/>
+            <Price totalPrice={burgerState.totalPrice}/>
             {builderControls}
             <Button name={"Order Now"}/>
         </div>
