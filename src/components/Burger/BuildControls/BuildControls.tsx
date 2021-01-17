@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
  
@@ -24,6 +24,19 @@ const BuildControls: React.FC<BuildControlsProps> = () => {
     const controls = useSelector( (store: RootState) => store.ingredients.ingredients)
     const burgerState = useSelector( (store: RootState) => store.burger)
     const dispatch = useDispatch();
+
+    const xyz = () => {
+        if (controls != null) {
+            for (let i = 0; i < controls.length; i++) {
+             ingredients = {...ingredients, [controls[i].type]: 0}
+            }
+        }
+        console.log(ingredients);
+    }
+
+    useEffect(() => {
+        xyz();
+    }, [controls]);
     
     
     const builderControls = controls != null ? controls.map( (item: IngredientsInterface) => (
