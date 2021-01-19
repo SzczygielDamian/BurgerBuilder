@@ -1,5 +1,5 @@
-import { Dispatch } from 'redux';
 import axios from '../../../firebase';
+import { setIngredients } from '../../BurgerBuilder/Actions/actions';
 
 export const ADD_INGREDIENTS = 'ADD_INGREDIENTS';
 export const EDIT_INGREDIENTS = 'EDIT_INGREDIENTS';
@@ -52,10 +52,14 @@ export const fetchIngredients = () => {
                         id: key
                     })
                 }
-                dispatch(fetchIngredientsSuccess(fetchedIngredients))
+                dispatch(fetchIngredientsSuccess(fetchedIngredients));
+                const ingredients = res.data.reduce( (acc: any, curr: any) => ({
+                    ...acc, [curr.type]: 0
+                }), {});
+                dispatch(setIngredients(ingredients));
             })
             .catch(err => {
-                dispatch(fetchingredientsFailed(err))
+                dispatch(fetchingredientsFailed(err));
             });
     }
 };

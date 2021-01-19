@@ -4,8 +4,8 @@ import classes from './CreateBurger.module.css';
 
 export interface CreateBurgerProps {
     label: string;
-    add: any;
-    remove: any;
+    add: () => any;
+    remove: () => any;
     countIngredient: number;
 }
  
@@ -14,7 +14,7 @@ const CreateBurger: React.FC<CreateBurgerProps> = ({ label, add, remove, countIn
     return (  
         <div className={classes.BuildControl}>
             <div className={classes.Label}>{label} : {countIngredient}</div>
-            <button className={classes.Less} onClick={remove} disabled={countIngredient === 0 ? true : false}>Less</button>
+            <button className={classes.Less} onClick={remove} disabled={countIngredient === 0 }>Less</button>
             <button className={classes.More} onClick={add}>More</button>
         </div>
     );
