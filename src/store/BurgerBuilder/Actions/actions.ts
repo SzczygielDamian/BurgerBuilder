@@ -10,7 +10,7 @@ export interface BurgerInterface {
 }
 
 
-export const setIngredients = (ingredients: any) => ({
+export const setIngredients = (ingredients: {[key: string]: string}) => ({
     type: SET_INGREDIENT,
     payload: ingredients
 })
@@ -20,10 +20,8 @@ export const addIngredient = (ingredient: BurgerInterface) => ({
     payload: ingredient,
 });
 
-export const removeIngredient = (id?: string) => ({
+export const removeIngredient = (ingredient: BurgerInterface) => ({
     type: REMOVE_INGREDIENT,
-    payload: {
-        id,
-    }
+    payload: ingredient,
 });
 
