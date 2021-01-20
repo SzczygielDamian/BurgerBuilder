@@ -32,6 +32,9 @@ const BurgerIngredient: React.FC<BurgerIngredientProps> = ({ type }) => {
         case ('salad'):
             ingredient = <div className={classes.Salad}></div>
             break;
+        case ('pepper'):
+            ingredient = <div className={classes.Pepper}></div>
+            break;
         default:
             ingredient = null;
     }

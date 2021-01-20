@@ -2,7 +2,7 @@ import { Action } from '../../IAction';
 
 import { ADD_INGREDIENT, REMOVE_INGREDIENT, SET_INGREDIENT } from '../Actions/actions';
 
-interface BurgerState {
+export interface BurgerStateInterface {
     burger: {[key: string]: number},
     totalPrice: number;
 }
@@ -12,11 +12,11 @@ const initialState = {
     totalPrice: 4,
 }
 
-const setIngredients = (state: BurgerState , action: Action) => {    
+const setIngredients = (state: BurgerStateInterface , action: Action) => {    
     return {...state, burger: action.payload };
 }
 
-const addIngredient = (state: BurgerState, action: Action) => {
+const addIngredient = (state: BurgerStateInterface, action: Action) => {
     const updatedIngredient = { [action.payload.type]: state.burger[action.payload.type] + 1 };
     const updatedIngredients = {...state.burger, ...updatedIngredient};
     return {
@@ -25,7 +25,7 @@ const addIngredient = (state: BurgerState, action: Action) => {
     }
 }
 
-const removeIngredient = (state: BurgerState, action: Action) => {
+const removeIngredient = (state: BurgerStateInterface, action: Action) => {
     const updatedIngredient = { [action.payload.type]: state.burger[action.payload.type] - 1 };
     const updatedIngredients = {...state.burger, ...updatedIngredient};
     return {

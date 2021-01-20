@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import Price from "./Price/Price";
@@ -10,24 +10,23 @@ import classes from "./BuildControls.module.css";
 import { RootState } from "../../../store/rootReducer";
 
 import { IngredientsInterface } from "../../../store/Ingredients/Actions/actions";
+import { BurgerStateInterface } from "../../../store/BurgerBuilder/Reducer/reducer";
 
 import {
   addIngredient,
   removeIngredient,
-  setIngredients,
 } from "../../../store/BurgerBuilder/Actions/actions";
 
-export interface BuildControlsProps {}
+interface BuildControlsProps {
+  burgerState: BurgerStateInterface,
+}
 
-
-
-const BuildControls: React.FC<BuildControlsProps> = () => {
+const BuildControls: React.FC<BuildControlsProps> = ({burgerState}) => {
+  const dispatch = useDispatch();
   const controls = useSelector(
     (store: RootState) => store.ingredients.ingredients
   );
-  const burgerState = useSelector((store: RootState) => store.burger);
-  const dispatch = useDispatch();
-
+ 
   const builderControls =
     controls != null
       ? controls.map((item: IngredientsInterface) => {
