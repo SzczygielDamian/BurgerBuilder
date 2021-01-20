@@ -4,11 +4,12 @@ import classes from './Button.module.css';
 
 export interface ButtonProps {
     name: string;
+    click: () => any;
 }
  
-const Button: React.FC<ButtonProps> = ({ name }) => {
+const Button: React.FC<ButtonProps> = ({ name, click }) => {
     return ( 
-        <button className={classes.OrderButton}>{name}</button>
+        <button className={classes.OrderButton} onClick={click}>{name}</button>
     );
 }
  

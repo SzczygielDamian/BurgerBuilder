@@ -19,9 +19,10 @@ import {
 
 interface BuildControlsProps {
   burgerState: BurgerStateInterface,
+  clickOrder: () => any;
 }
 
-const BuildControls: React.FC<BuildControlsProps> = ({burgerState}) => {
+const BuildControls: React.FC<BuildControlsProps> = ({burgerState, clickOrder}) => {
   const dispatch = useDispatch();
   const controls = useSelector(
     (store: RootState) => store.ingredients.ingredients
@@ -46,7 +47,7 @@ const BuildControls: React.FC<BuildControlsProps> = ({burgerState}) => {
     <div className={classes.BuildControls}>
       <Price totalPrice={burgerState.totalPrice} />
       {builderControls}
-      <Button name={"Order Now"} />
+      <Button name={"Order Now"} click={clickOrder}/>
     </div>
   );
 };
