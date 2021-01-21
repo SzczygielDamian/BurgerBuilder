@@ -13,7 +13,7 @@ export interface BurgerInterface {
 export const setIngredients = (ingredients: {[key: string]: string}) => ({
     type: SET_INGREDIENT,
     payload: ingredients
-})
+});
 
 export const addIngredient = (ingredient: BurgerInterface) => ({
     type: ADD_INGREDIENT,
