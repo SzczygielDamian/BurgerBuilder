@@ -21,8 +21,7 @@ export const purchaseBurgerStart = () => ({
 
 export const purchaseBurgerSuccess = (id: string, orderData: Order) => ({
     type: PURCHASE_BURGER_SUCCESS,
-    orderId: id,
-    orderData: orderData, 
+    payload: {id, orderData}, 
 });
 
 export const purchaseBurgerFailed = (error: string) => ({

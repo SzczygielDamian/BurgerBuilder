@@ -4,12 +4,14 @@ import Button from "../../../UI/Button/Button";
 
 export interface OrderSummaryProps {
   burgerState: BurgerStateInterface;
-  clickOrder: () => any;
+  closeOrderModal: () => any;
+  openFormModal: () => any;
 }
 
 const OrderSummary: React.FC<OrderSummaryProps> = ({
   burgerState,
-  clickOrder,
+  closeOrderModal,
+  openFormModal
 }) => {
   const ingredientSummry = Object.keys(burgerState.burger).map((ingKey) => {
     return (
@@ -27,8 +29,8 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
       <p>
         <strong>Total Price: {burgerState.totalPrice.toFixed(2)}</strong>
       </p>
-      <Button name={"CANCEL"} click={clickOrder} />
-      {/* <Button name={"BUY"} click={}/> */}
+      <Button name={"CANCEL"} click={closeOrderModal} />
+      <Button name={"BUY"} click={openFormModal}/>
     </>
   );
 };

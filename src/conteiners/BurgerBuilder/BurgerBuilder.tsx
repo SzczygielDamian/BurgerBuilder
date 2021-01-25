@@ -11,6 +11,7 @@ import { RootState } from "../../store/rootReducer";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 
 import classes from './BurgerBuilder.module.css';
+import OrderForm from "../../components/Burger/OrderForms/OrderForm";
 
 export interface BurgerBuilderProps {}
 
@@ -18,6 +19,7 @@ const BurgerBuilder: React.FC<BurgerBuilderProps> = () => {
   const dispatch = useDispatch();
   const burgerState = useSelector((store: RootState) => store.burger);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [OpenOrderForms, setOpenOrderForms] = useState(false);
 
   useEffect(() => {
     dispatch(fetchIngredients());
@@ -26,10 +28,18 @@ const BurgerBuilder: React.FC<BurgerBuilderProps> = () => {
 
   const handleOpenModal = () => setModalIsOpen(prevValue => !prevValue) 
 
+  const handleOpenOrderForms = () => {
+    setModalIsOpen(prevState => !prevState);
+    setOpenOrderForms(prevState => !prevState);
+  }
+
   return (
     <div>
       <Modal isOpen={modalIsOpen} contentLabel="Order Modal"  ariaHideApp={false}  className={classes.Modal}>
-        <OrderSummary burgerState={burgerState} clickOrder={handleOpenModal}/>
+        <OrderSummary burgerState={burgerState} closeOrderModal={handleOpenModal} openFormModal={handleOpenOrderForms}/>
+      </Modal>
+      <Modal isOpen={OpenOrderForms} contentLabel="Order Forms Modal"  ariaHideApp={false}  className={classes.ModalForm}>
+        <OrderForm />
       </Modal>
       <Burger burgerState={burgerState} />
       <BuildControls burgerState={burgerState} clickOrder={handleOpenModal}/>
