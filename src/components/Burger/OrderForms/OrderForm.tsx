@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
+import { TextField } from '../../../UI/TextField/TextField';
 
 export interface OrderFormProps {
     
@@ -31,9 +32,13 @@ const OrderForm: React.FC<OrderFormProps> = () => {
             }}
             >
             {formik => (
-                <Form>
-                    
-                </Form>
+             <div>
+                    {console.log(formik)}
+                    <Form>
+                        <TextField label="First name" name="firstName" type="text"/>
+                    </Form>
+             </div>
+               
             )}
             </Formik>
         </div>
