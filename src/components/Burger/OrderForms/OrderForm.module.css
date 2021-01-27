@@ -1,0 +1,17 @@
+.Button {
+    margin: 30px;
+    font-size: 18px;
+    height: 45px;
+    width: 150px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 1px 1px 0px 2px rgba (0,0,0,0.3);
+    background: #5C9210;
+    cursor: pointer;
+    float: right;
+}
+
+.Success {
+    color: #000000;
+
+}

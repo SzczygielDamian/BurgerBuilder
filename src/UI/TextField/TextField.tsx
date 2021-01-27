@@ -12,9 +12,10 @@ const TextField: React.FC<TextFieldProps> = ({ label, ...props}) => {
     const [field, meta] = useField(props);   
     return (
         <div>
-            <label htmlFor={field.name}>{label} </label>
+            <label htmlFor={field.name} className={classes.Label}>{label} </label>
             <input
                 autoComplete="off"
+                className={classes.InputElement}
                 {...field}
                 {...props}
             />

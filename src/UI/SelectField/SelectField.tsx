@@ -12,8 +12,8 @@ const SelectField: React.FC<SelectFieldProps> = ({ label, ...props}) => {
     const [field, meta] = useField(props);   
     return (
         <div>
-             <label htmlFor={field.name}>{label} </label>
-            <select {...field} {...props}/>
+             <label htmlFor={field.name} className={classes.label}>{label} </label>
+            <select {...field} {...props} className={classes.SelectElement}/>
             <ErrorMessage component="div" name={field.name} className={classes.Error}/>
         </div>
     )

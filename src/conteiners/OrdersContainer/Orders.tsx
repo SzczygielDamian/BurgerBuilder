@@ -1,15 +1,15 @@
 import React from 'react';
 
-import Order from '../../components/Order/Order';
+import Orders from '../../components/Orders/Orders';
 
 export interface OrdersProps {
     
 }
  
-const Orders: React.FC<OrdersProps> = () => {
+const OrdersContainer: React.FC<OrdersProps> = () => {
     return ( 
         <div>
-            <Order />
+            <Orders />
         </div>
      );
 }

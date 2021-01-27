@@ -3,7 +3,8 @@ import React from 'react';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 import classes from './Burger.module.css';
-import { BurgerStateInterface } from '../../store/BurgerBuilder/Reducer/reducer';
+import { BurgerStateInterface } from '../../models/IBurgerIngredients';
+
 export interface BurgerProps {
     burgerState: BurgerStateInterface,
 }

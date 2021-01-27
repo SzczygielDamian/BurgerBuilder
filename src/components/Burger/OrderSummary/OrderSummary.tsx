@@ -1,5 +1,6 @@
 import * as React from "react";
-import { BurgerStateInterface } from "../../../store/BurgerBuilder/Reducer/reducer";
+import { BurgerStateInterface } from "../../../models/IBurgerIngredients";
+
 import Button from "../../../UI/Button/Button";
 
 export interface OrderSummaryProps {

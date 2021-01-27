@@ -1,11 +1,7 @@
+import { BurgerStateInterface } from '../../../models/IBurgerIngredients';
 import { Action } from '../../IAction';
 
 import { ADD_INGREDIENT, REMOVE_INGREDIENT, SET_INGREDIENT } from '../Actions/actions';
-
-export interface BurgerStateInterface {
-    burger: {[key: string]: number},
-    totalPrice: number;
-}
 
 const initialState = {
     burger: {},

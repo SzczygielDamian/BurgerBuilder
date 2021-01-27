@@ -10,12 +10,14 @@ import classes from "./BuildControls.module.css";
 import { RootState } from "../../../store/rootReducer";
 
 import { IngredientsInterface } from "../../../store/Ingredients/Actions/actions";
-import { BurgerStateInterface } from "../../../store/BurgerBuilder/Reducer/reducer";
+import { BurgerStateInterface } from "../../../models/IBurgerIngredients";
+
 
 import {
   addIngredient,
   removeIngredient,
 } from "../../../store/BurgerBuilder/Actions/actions";
+
 
 interface BuildControlsProps {
   burgerState: BurgerStateInterface,

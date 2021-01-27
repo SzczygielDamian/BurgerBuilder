@@ -1,6 +1,7 @@
 import axios from '../../../firebase';
 
-import { BurgerStateInterface } from "../../BurgerBuilder/Reducer/reducer";
+import { IOrder } from '../../../models/IOrder';
+import { IOrderForm } from '../../../models/IOrderForm';
 
 export const PURCHASE_BURGER_START = 'PURCHASE_BURGER_START';
 export const PURCHASE_BURGER_SUCCESS = 'PURCHASE_BURGER_SUCCESS';
@@ -11,15 +12,12 @@ export const FETCH_ORDERS_START = 'FETCH_ORDERS_START';
 export const FETCH_ORDERS_SUCCESS = 'FETCH_ORDERS_SUCCESS';
 export const FETCH_ORDERS_FAILED = 'FETCH_ORDERS_FAILED';
 
-export interface Order {
-    orderData: BurgerStateInterface
-}
 
 export const purchaseBurgerStart = () => ({
     type: PURCHASE_BURGER_START
 });
 
-export const purchaseBurgerSuccess = (id: string, orderData: Order) => ({
+export const purchaseBurgerSuccess = (id: string, orderData: IOrder) => ({
     type: PURCHASE_BURGER_SUCCESS,
     payload: {id, orderData}, 
 });
@@ -29,7 +27,7 @@ export const purchaseBurgerFailed = (error: string) => ({
     error: error
 });
 
-export const purchaseBurger = (orderData: Order) => {
+export const purchaseBurger = (orderData: IOrderForm) => {
    return (dispatch: any) => {
         dispatch(purchaseBurgerStart());
         axios.post('orders.json', orderData)
@@ -42,6 +40,36 @@ export const purchaseInit = () => ({
     type: PURCHASE_INIT
 });
 
+export const fetchOrdersStart = () => ({
+    type: FETCH_ORDERS_START
+});
+
+export const fetchOrdersSuccess = (order: IOrderForm[]) => ({
+    type: FETCH_ORDERS_SUCCESS,
+    payload: order
+});
+
+export const fetchBurgerFailed = (error: string) => ({
+    type: FETCH_ORDERS_FAILED,
+    payload: error
+});
+
+export const fetchOrders = () => {
+    return (dispatch: any) => {
+        dispatch(fetchOrdersStart());
+        axios.get('/orders.json')
+            .then(res => {
+                const fetchedOrders = [];
+                for (let key in res.data) {
+                    fetchedOrders.push({
+                        ...res.data[key],
+                        id: key
+                    })
+                }
+                dispatch(fetchOrdersSuccess(fetchedOrders))
+            })
+    }
+};
 
 
 

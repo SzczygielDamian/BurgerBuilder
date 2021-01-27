@@ -1,12 +1,20 @@
 import React from 'react';
-import { Formik, Field, Form, FormikHelpers } from 'formik';
+import { Formik, Form } from 'formik';
 import TextField  from '../../../UI/TextField/TextField';
 import SelectField from '../../../UI/SelectField/SelectField'; 
 
+import { BurgerStateInterface } from '../../../models/IBurgerIngredients';
+
 import validate  from '../../../Validation/orderValidation';
 
+import classes from './OrderForm.module.css';
+import { useDispatch } from 'react-redux';
+import { purchaseBurger } from '../../../store/Order/Actions/action';
+
+
+
 export interface OrderFormProps {
-    
+    burgerState: BurgerStateInterface;
 }
 
 interface Values {
@@ -18,7 +26,8 @@ interface Values {
     phoneNumber: string;
 }
   
-const OrderForm: React.FC<OrderFormProps> = () => {
+const OrderForm: React.FC<OrderFormProps> = ({ burgerState }) => {
+    const dispatch = useDispatch();
    
     return ( 
         <div>
@@ -34,12 +43,12 @@ const OrderForm: React.FC<OrderFormProps> = () => {
             }}
             validationSchema={validate}
             onSubmit={values => {
-                console.log(values);
+                dispatch(purchaseBurger({...values, ...burgerState}))
+                console.log({...values, ...burgerState});
             }}
             >
             {formik => (
              <div>
-                    {console.log(formik)}
                     <Form>
                         <TextField label="First name" name="firstName" type="text"/>
                         <TextField label="Last name" name="lastName" type="text"/>
@@ -47,10 +56,11 @@ const OrderForm: React.FC<OrderFormProps> = () => {
                         <TextField label="City" name="city" type="text"/>
                         <TextField label="Address" name="address" type="text"/>
                         <SelectField label="Delivery Method" name="deliveryMethod" type="select">
+                            <option value=""></option>
                             <option value="fastest">Fastest</option>
                             <option value="cheapest">Cheapest</option>
                         </SelectField>
-                        <button type="submit">Send</button>
+                        <button type="submit" className={[classes.Button, classes.Success].join(' ')}>Send</button>
                         {/* <button></button> */}
                     </Form>
              </div>

@@ -39,7 +39,7 @@ const BurgerBuilder: React.FC<BurgerBuilderProps> = () => {
         <OrderSummary burgerState={burgerState} closeOrderModal={handleOpenModal} openFormModal={handleOpenOrderForms}/>
       </Modal>
       <Modal isOpen={OpenOrderForms} contentLabel="Order Forms Modal"  ariaHideApp={false}  className={classes.ModalForm}>
-        <OrderForm />
+        <OrderForm burgerState={burgerState}/>
       </Modal>
       <Burger burgerState={burgerState} />
       <BuildControls burgerState={burgerState} clickOrder={handleOpenModal}/>

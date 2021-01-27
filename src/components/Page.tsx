@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router";
 
 import BurgerBuilder from "../conteiners/BurgerBuilder/BurgerBuilder";
 import Checkout from "../conteiners/Checekout/Checkout";
-import Orders from "../conteiners/Orders/Orders";
+import OrdersContainer from "../conteiners/OrdersContainer/Orders";
 import Auth from "../conteiners/Auth/Auth";
 
 const Page = () => {
@@ -12,7 +12,7 @@ const Page = () => {
         <Switch>
           <Route exact path="/" component={BurgerBuilder} />
           <Route path="/checkout" component={Checkout} />
-          <Route path="/orders" component={Orders} />
+          <Route path="/orders" component={OrdersContainer} />
           <Route path="/auth" component={Auth} />
         </Switch>   
     </div>
