@@ -1,7 +1,8 @@
 import { BurgerStateInterface } from '../../../models/IBurgerIngredients';
 import { Action } from '../../IAction';
 
-import { ADD_INGREDIENT, REMOVE_INGREDIENT, SET_INGREDIENT } from '../Actions/actions';
+
+import { ADD_INGREDIENT, REMOVE_INGREDIENT, SET_INGREDIENT, RESET_INGREDIENT } from '../Actions/actions';
 
 const initialState = {
     burger: {},
@@ -38,6 +39,8 @@ export const burgerBuilderReducer = (state = initialState, action: Action) => {
             return addIngredient(state, action);
         case REMOVE_INGREDIENT:
             return removeIngredient(state, action);
+        case RESET_INGREDIENT:
+            return { ...state, ...initialState }
         default:
             return state;
     }

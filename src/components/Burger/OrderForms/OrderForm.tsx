@@ -10,14 +10,14 @@ import validate  from '../../../Validation/orderValidation';
 import classes from './OrderForm.module.css';
 import { useDispatch } from 'react-redux';
 import { purchaseBurger } from '../../../store/Order/Actions/action';
+import { resetIngredient } from '../../../store/BurgerBuilder/Actions/actions';
 
-
+import { useAlert } from "react-alert";
 
 export interface OrderFormProps {
     burgerState: BurgerStateInterface;
     closeFormModal: () => any;
 }
-
 interface Values {
     firstName: string;
     lastName: string;
@@ -28,6 +28,7 @@ interface Values {
 }
   
 const OrderForm: React.FC<OrderFormProps> = ({ burgerState, closeFormModal }) => {
+    const alert = useAlert();
     const dispatch = useDispatch();
     const closeModal = () => (closeFormModal())
    
@@ -46,7 +47,9 @@ const OrderForm: React.FC<OrderFormProps> = ({ burgerState, closeFormModal }) =>
             validationSchema={validate}
             onSubmit={values => {
                 dispatch(purchaseBurger({...values, ...burgerState}));
+                dispatch(resetIngredient());
                 closeModal();
+                alert.success("Order added!");
             }}
             >
             {formik => (
