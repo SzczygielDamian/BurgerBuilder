@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router";
 
 import BurgerBuilder from "../conteiners/BurgerBuilder/BurgerBuilder";
 import Checkout from "../conteiners/Checekout/Checkout";
-import OrdersContainer from "../conteiners/OrdersContainer/Orders";
+import OrdersContainer from "../conteiners/OrdersContainer/OrdersContainer";
 import Auth from "../conteiners/Auth/Auth";
 
 const Page = () => {

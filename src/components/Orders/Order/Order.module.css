@@ -1,0 +1,7 @@
+.SpanElement {
+    text-transform: capitalize;
+    display: inline-block;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}

@@ -33,13 +33,15 @@ const BurgerBuilder: React.FC<BurgerBuilderProps> = () => {
     setOpenOrderForms(prevState => !prevState);
   }
 
+  const handleCloseOrderForms = () => setOpenOrderForms(prevState => !prevState);
+
   return (
     <div>
       <Modal isOpen={modalIsOpen} contentLabel="Order Modal"  ariaHideApp={false}  className={classes.Modal}>
         <OrderSummary burgerState={burgerState} closeOrderModal={handleOpenModal} openFormModal={handleOpenOrderForms}/>
       </Modal>
       <Modal isOpen={OpenOrderForms} contentLabel="Order Forms Modal"  ariaHideApp={false}  className={classes.ModalForm}>
-        <OrderForm burgerState={burgerState}/>
+        <OrderForm burgerState={burgerState} closeFormModal={handleCloseOrderForms}/>
       </Modal>
       <Burger burgerState={burgerState} />
       <BuildControls burgerState={burgerState} clickOrder={handleOpenModal}/>

@@ -1,4 +1,4 @@
-import Orders from '../../../conteiners/OrdersContainer/Orders';
+import Orders from '../../../conteiners/OrdersContainer/OrdersContainer';
 import { Action } from '../../IAction';
 import { FETCH_ORDERS_FAILED, FETCH_ORDERS_START, FETCH_ORDERS_SUCCESS, PURCHASE_BURGER_FAIL, PURCHASE_BURGER_START, PURCHASE_BURGER_SUCCESS, PURCHASE_INIT } from '../Actions/action';
 

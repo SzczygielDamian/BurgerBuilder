@@ -6,11 +6,14 @@ import { RootState } from '../../store/rootReducer';
 
 import classes from './Orders.module.css';
 
+import { IOrderForm } from '../../models/IOrderForm';
+import Order from './Order/Order';
 
-export interface OrderProps {
+
+export interface OrdersProps {
 }
  
-const Order: React.FC<OrderProps> = () => {
+const Orders: React.FC<OrdersProps> = () => {
      const dispatch = useDispatch();
      const orders = useSelector(
           (store: RootState) => store.orders.orders
@@ -21,13 +24,15 @@ const Order: React.FC<OrderProps> = () => {
           // eslint-disable-next-line react-hooks/exhaustive-deps
      }, []);
 
+     const orderComponent = (orders !== null) ? orders.map( (item: IOrderForm) => (
+          <Order key={item.id} orderElement={item}/>
+     )) : null;
+
     return ( 
         <div className={classes.Order}>
-             {console.log(orders)}
-             <p>Ingredients: </p>
-             <p>Price: <strong>USD </strong></p>
+             {orderComponent}
         </div>
      );
 }
  
-export default Order;
+export default Orders;

@@ -14,4 +14,4 @@ const OrdersContainer: React.FC<OrdersProps> = () => {
      );
 }
  
-export default Orders;
+export default OrdersContainer;

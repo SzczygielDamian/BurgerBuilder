@@ -15,6 +15,7 @@ import { purchaseBurger } from '../../../store/Order/Actions/action';
 
 export interface OrderFormProps {
     burgerState: BurgerStateInterface;
+    closeFormModal: () => any;
 }
 
 interface Values {
@@ -26,8 +27,9 @@ interface Values {
     phoneNumber: string;
 }
   
-const OrderForm: React.FC<OrderFormProps> = ({ burgerState }) => {
+const OrderForm: React.FC<OrderFormProps> = ({ burgerState, closeFormModal }) => {
     const dispatch = useDispatch();
+    const closeModal = () => (closeFormModal())
    
     return ( 
         <div>
@@ -43,8 +45,8 @@ const OrderForm: React.FC<OrderFormProps> = ({ burgerState }) => {
             }}
             validationSchema={validate}
             onSubmit={values => {
-                dispatch(purchaseBurger({...values, ...burgerState}))
-                console.log({...values, ...burgerState});
+                dispatch(purchaseBurger({...values, ...burgerState}));
+                closeModal();
             }}
             >
             {formik => (
