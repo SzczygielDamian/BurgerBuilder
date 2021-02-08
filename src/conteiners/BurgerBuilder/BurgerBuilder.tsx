@@ -10,7 +10,7 @@ import { fetchIngredients } from "../../store/Ingredients/Actions/actions";
 import { RootState } from "../../store/rootReducer";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 
-import classes from './BurgerBuilder.module.css';
+import classes from "./BurgerBuilder.module.css";
 import OrderForm from "../../components/Burger/OrderForms/OrderForm";
 
 export interface BurgerBuilderProps {}
@@ -26,25 +26,43 @@ const BurgerBuilder: React.FC<BurgerBuilderProps> = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleOpenModal = () => setModalIsOpen(prevValue => !prevValue) 
+  const handleOpenModal = () => setModalIsOpen((prevValue) => !prevValue);
 
   const handleOpenOrderForms = () => {
-    setModalIsOpen(prevState => !prevState);
-    setOpenOrderForms(prevState => !prevState);
-  }
+    setModalIsOpen((prevState) => !prevState);
+    setOpenOrderForms((prevState) => !prevState);
+  };
 
-  const handleCloseOrderForms = () => setOpenOrderForms(prevState => !prevState);
+  const handleCloseOrderForms = () =>
+    setOpenOrderForms((prevState) => !prevState);
 
   return (
     <div>
-      <Modal isOpen={modalIsOpen} contentLabel="Order Modal"  ariaHideApp={false}  className={classes.Modal}>
-        <OrderSummary burgerState={burgerState} closeOrderModal={handleOpenModal} openFormModal={handleOpenOrderForms}/>
+      <Modal
+        isOpen={modalIsOpen}
+        contentLabel="Order Modal"
+        ariaHideApp={false}
+        className={classes.Modal}
+      >
+        <OrderSummary
+          burgerState={burgerState}
+          closeOrderModal={handleOpenModal}
+          openFormModal={handleOpenOrderForms}
+        />
       </Modal>
-      <Modal isOpen={OpenOrderForms} contentLabel="Order Forms Modal"  ariaHideApp={false}  className={classes.ModalForm}>
-        <OrderForm burgerState={burgerState} closeFormModal={handleCloseOrderForms}/>
+      <Modal
+        isOpen={OpenOrderForms}
+        contentLabel="Order Forms Modal"
+        ariaHideApp={false}
+        className={classes.ModalForm}
+      >
+        <OrderForm
+          burgerState={burgerState}
+          closeFormModal={handleCloseOrderForms}
+        />
       </Modal>
       <Burger burgerState={burgerState} />
-      <BuildControls burgerState={burgerState} clickOrder={handleOpenModal}/>
+      <BuildControls burgerState={burgerState} clickOrder={handleOpenModal} />
     </div>
   );
 };

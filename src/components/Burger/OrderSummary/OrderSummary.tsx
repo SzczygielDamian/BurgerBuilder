@@ -12,7 +12,7 @@ export interface OrderSummaryProps {
 const OrderSummary: React.FC<OrderSummaryProps> = ({
   burgerState,
   closeOrderModal,
-  openFormModal
+  openFormModal,
 }) => {
   const ingredientSummry = Object.keys(burgerState.burger).map((ingKey) => {
     return (
@@ -31,7 +31,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
         <strong>Total Price: {burgerState.totalPrice.toFixed(2)}</strong>
       </p>
       <Button name={"CANCEL"} click={closeOrderModal} />
-      <Button name={"BUY"} click={openFormModal}/>
+      <Button name={"BUY"} click={openFormModal} />
     </>
   );
 };

@@ -2,9 +2,7 @@ import React from 'react';
 
 import Orders from '../../components/Orders/Orders';
 
-export interface OrdersProps {
-    
-}
+export interface OrdersProps {}
  
 const OrdersContainer: React.FC<OrdersProps> = () => {
     return ( 

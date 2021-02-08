@@ -1,13 +1,15 @@
-import React from 'react';
+import React from "react";
 
 export interface PriceProps {
-    totalPrice: number;
+  totalPrice: number;
 }
- 
-const Price: React.FC<PriceProps> = ({totalPrice}) => {
-    return (
-        <p>Total Price: <strong>{totalPrice.toFixed(2)}</strong></p>
-      );
-}
- 
+
+const Price: React.FC<PriceProps> = ({ totalPrice }) => {
+  return (
+    <p>
+      Total Price: <strong>{totalPrice.toFixed(2)}</strong>
+    </p>
+  );
+};
+
 export default Price;

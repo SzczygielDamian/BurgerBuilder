@@ -12,24 +12,25 @@ import { RootState } from "../../../store/rootReducer";
 import { IngredientsInterface } from "../../../store/Ingredients/Actions/actions";
 import { BurgerStateInterface } from "../../../models/IBurgerIngredients";
 
-
 import {
   addIngredient,
   removeIngredient,
 } from "../../../store/BurgerBuilder/Actions/actions";
 
-
 interface BuildControlsProps {
-  burgerState: BurgerStateInterface,
+  burgerState: BurgerStateInterface;
   clickOrder: () => any;
 }
 
-const BuildControls: React.FC<BuildControlsProps> = ({burgerState, clickOrder}) => {
+const BuildControls: React.FC<BuildControlsProps> = ({
+  burgerState,
+  clickOrder,
+}) => {
   const dispatch = useDispatch();
   const controls = useSelector(
     (store: RootState) => store.ingredients.ingredients
   );
- 
+
   const builderControls =
     controls != null
       ? controls.map((item: IngredientsInterface) => {
@@ -49,7 +50,7 @@ const BuildControls: React.FC<BuildControlsProps> = ({burgerState, clickOrder}) 
     <div className={classes.BuildControls}>
       <Price totalPrice={burgerState.totalPrice} />
       {builderControls}
-      <Button name={"Order Now"} click={clickOrder}/>
+      <Button name={"Order Now"} click={clickOrder} />
     </div>
   );
 };
